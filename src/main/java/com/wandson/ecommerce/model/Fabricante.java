@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Field;
+
 @Entity
 @Table(name = "fabricante")
 public class Fabricante implements Serializable {
@@ -17,6 +19,7 @@ public class Fabricante implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	@Field
 	private String nome;
 
 	public Long getCodigo() {

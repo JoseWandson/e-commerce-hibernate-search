@@ -13,10 +13,11 @@ import javax.persistence.Table;
 
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 @Entity
-@Table(name = "produto")
 @Indexed
+@Table(name = "produto")
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -26,11 +27,13 @@ public class Produto implements Serializable {
 	private Long codigo;
 	@Field
 	private String nome;
+	@Field
 	private String descricao;
 	private BigDecimal valor;
-	
+
 	@ManyToOne
-	@JoinColumn(name="codigo_fabricante")
+	@IndexedEmbedded
+	@JoinColumn(name = "codigo_fabricante")
 	private Fabricante fabricante;
 
 	public Long getCodigo() {
